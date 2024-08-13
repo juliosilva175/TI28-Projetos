@@ -57,6 +57,9 @@ if($_SERVER['REQUEST_METHOD']== 'POST'){
                 <label>SENHA</label>
                 <input type="password" name="txtsenha" placeholder="Digite sua senha" required>
                 <br>
+                <label>EMAIL</label>
+                <input type="email" name="txtemail" placeholder="Digite seu email" required>
+                <br>
                 <br>
                 <input type="submit" value="ACESSAR">
         </form>
