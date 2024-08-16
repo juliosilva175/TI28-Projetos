@@ -47,28 +47,36 @@ else{
 </head>
 <body>
     <div class="container-global">
-        <form action="fomulario" action="produto-cadastro.php" methood="post>
-        <input type="decimal" name="txtqtd placeholder="DIGITE QUANTIDADE" requered>
-</select>
-        <br>
+        <form class="formulario" action="produto-cadastro.php" method="post">
+            <label>NOME PRODUTO</label>
+            <input type="text" name="txtnome" placeholder="DIGITE NOME PRODUTO" required>
+            <br>
+            
+            <label>QUANTIDADE</label>
+            <input type="decimal" name="txtqtd" placeholder="DIGITE QUANTIDADE" required>
+            <br>
 
-        <label>UNIDADE</lebel>
-        <option value="kl">KL</option>
-        <option value="lt">LT</option>
-        <option value="un">UN</option>
+            <label>UNIDADE</label>
+            <select name='txtunidade'>
+                <option value="kg">KG</option>
+                <option value="g">G</option>
+                <option value="un">UN</option>
+                <option value="lt">LT</option>
+            </select>
+            <br>
 
-        <label >PREÇO</label>
-        <input type="decimal" name="txtpreco" placeholder="Digite PREÇO" required>
-        <br>
-        <input type="" name="txtpreco" placeholder="Digite " required>
-        <br>
-        <input type="" name="txt" placeholder="Digite " required>
+            <label>PREÇO</label>
+            <input type="decimal" name="txtpreco" placeholder="DIGITE PREÇO" required>
+            <br>
+            <label>IBAGEM</label>
+            <input type="file" name='imagem' id='imagem'>
 
-
-    
+            <br>
+            <input type="submit" value="CADASTRAR PRODUTO">
         </form>
 
     </div>
     
 </body>
+</html>
 </html>
