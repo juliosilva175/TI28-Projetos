@@ -47,7 +47,7 @@ else{
 </head>
 <body>
     <div class="container-global">
-        <form class="formulario" action="produto-cadastro.php" method="post">
+        <form class="formulario" action="produto-cadastro.php" method="post" enctype="multipart/form-data">
             <label>NOME PRODUTO</label>
             <input type="text" name="txtnome" placeholder="DIGITE NOME PRODUTO" required>
             <br>
