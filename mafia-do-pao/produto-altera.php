@@ -74,12 +74,13 @@ else{
         <input type="hidden" name="id" value="<?= $id?>">
          
     <label>NOME PRODUTO</label>
-            <input type="text" name="txtnome" placeholder="DIGITE NOME PRODUTO" required>
+           <input type="text" name="txtnome" placeholder="DIGITE NOME PRODUTO" value="<?= $nomeproduto?>"  required>
             <br>
             
             <label>QUANTIDADE</label>
-            <input type="decimal" name="txtqtd" placeholder="DIGITE QUANTIDADE" required>
+            <input type="decimal" name="txtqtd" placeholder="DIGITE QUANTIDADE" value="<?= $quantidade?>" required>
             <br>
+ 
 
             <label>UNIDADE</label>
             <select name='txtunidade'>

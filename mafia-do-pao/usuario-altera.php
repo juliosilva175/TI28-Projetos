@@ -6,6 +6,7 @@ $id = $_GET['id'];
 $sql = "SELECT * FROM tb_usuarios WHERE use_id = '$id'";
 $retorno = mysqli_query($link, $sql);
   while($tbl = mysqli_fetch_array($retorno)){
+    $id = $tbl[0];
     $login = $tbl[1];
     $email = $tbl[2];
     $senha = $tbl[3];
@@ -27,7 +28,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     exit();
 
 }
-
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -41,8 +42,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 </head>
 <body>
     <div class="container-global">
-    <a href="backoffice.php"><img src="icons/Navigation-left-01-256.png" width="25" height="25"></a>
-
     
 
     <form class="formulario" action="usuario-altera.php" method="post">
