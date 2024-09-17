@@ -5,21 +5,21 @@ include("topo.php");
 // A Pagina carregou.... o que vai trazer
 
 //Pesquisando no Banco  Todos os Produtos do banco
-$sql ="SELET * FROM tb_produtos";
+$sql ="SELECT * FROM tb_produtos";
 $retorno = mysqli_query($link, $sql);
-$status ='1;'
+$status ='1';
 
 //FUNÇÃO APÓS CLICK DO RADIO ATIVO E INATIVO
-if ($_SERVER['REQUEST_METHOD'] == "POST"){
+if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $status = $_POST['status'];
 
-    if($status == 1){
-        $sql ="SELECT * FROM tb_produtos WHERE pro_status = '1'";
+    if($status == '1'){
+        $sql = "SELECT * FROM tb_produtos WHERE pro_status = '1'";
         $retorno = mysqli_query($link, $sql);
     }
     else{
-        $sql ="SELECT * FROM tb_produtos WHERE pro_status = '0'";
-        $retorno =mysqli_query($link, $sql); 
+        $sql = "SELECT * FROM tb_produtos WHERE pro_status = '0'";
+        $retorno = mysqli_query($link, $sql); 
     }
 }
 
@@ -35,13 +35,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/estilo.css">
-    <title>LISTA DE Produtos</title>
+    <title>PRODUTOS LISTA</title>
 </head>
 <body>
 
 
-    <div class="container-produto">
-        <!-- FAZER DEPOIS DO ROLÊ -->
+    <div class="container-listaproduto">
+        <!-- listar ativos e inativos -->
         <form action="cliente-lista.php" method="post">
             <input type="radio" name="status" value="1" requerid onclick="submit()"
             <?= $status== '1' ? "checked" : "" ?>>Ativos
@@ -58,6 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
                 <th>Unidade</th>
                 <th>Preco</th>
                 <th>STATUS</th>
+                <th>IMAGEM</th>
                 <th>ALTERAR</th>
             </tr>
 
@@ -71,9 +72,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
                     <td><?=$tbl[2]?></td> <!-- COLETA O NOME DO Quantidade-->
                     <td><?=$tbl[3]?></td> <!-- COLETA O EMAIL DO unidade-->
                     <td><?=$tbl[4]?></td> <!-- coleta o status Do Preço-->
-                    <td><?=$tbl[5] == '1'?"ATIVO" : "INATIVO" ?></td>
-                    <td><?=$tbl[6]?></td> <!-- coleta a ibagem-->
-                    <td><img src='data:image/jpeg;base64,<?= $tbl[6]?>' width="200" height="200"></td>
+                    <td><?=$tbl[5] == '1'?"ATIVO" : "INATIVO" ?></td> <!-- COLETA O STATUS DO PRODUTO-->
+                    <td><img src='data:image/jpeg;base64,<?= $tbl[6]?>' width="200" height="200"></td> <!-- COLETA A IBAGEM -->
+
                     <td><a href="produto-altera.php?id=<?=$tbl[0]?>">
                             <input type="button" value="ALTERAR">
                         </a>
@@ -82,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
                  <?php
                 }
                 ?>
-        </table>
+     </table>
 
     </div>
     

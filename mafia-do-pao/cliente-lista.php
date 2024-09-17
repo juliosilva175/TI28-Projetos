@@ -10,12 +10,12 @@ $retorno = mysqli_query($link, $sql);
 $status = '1';
 
 
-//enviando para o servidor o seletor
+//enviando para o servidor o seletor radio em 0 ou 1
 if($_SERVER['REQUEST_METHOD'] == 'post'){
     $status = $_POST['status'];
 
     if($status
-     =="1"){
+     =='1'){
         $sql = "SELECT * FROM tb_clientes WHERE Cli_status ='1'";
         $retorno = mysqli_query($link, $sql);
 
@@ -36,10 +36,9 @@ if($_SERVER['REQUEST_METHOD'] == 'post'){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/estilo.css">
-    <title>LISTA DE CLIENTES</title>
+    <title>CLIENTE LISTA</title>
 </head>
 <body>
-<a href="backoffice.php"><img src="icons/Navigation-left-01-256.png" width="25" height="25"></a>
 
 
     <div class="container-listaclientes">
@@ -58,6 +57,7 @@ if($_SERVER['REQUEST_METHOD'] == 'post'){
                 <th>CPF</th>
                 <th>nome</th>
                 <th>EMAIL</th>
+                <th>TELEFONE</th>
                 <th>STATUS</th>
                 <th>ALTERAR</th>
             </tr>
@@ -72,7 +72,7 @@ if($_SERVER['REQUEST_METHOD'] == 'post'){
                     <td><?=$tbl[2]?></td> <!-- COLETA O NOME DO clientes-->
                     <td><?=$tbl[3]?></td> <!-- COLETA O EMAIL DO clientes-->
                     <td><?=$tbl[4]?></td> <!-- coleta o status Do clientes-->
-                    <td><?=$tbl[5] == '1'?"ATIVO" : "INATIVO" ?></td>
+                    <td><?=$tbl[5] == '1'?"ATIVO" : "INATIVO" ?></td><!-- COLETA O STATUS DO USUARIO-->
                     <td><a href="cliente-altera.php?id=<?=$tbl[5]?>">
                             <input type="button" value="ALTERAR">
                         </a>
