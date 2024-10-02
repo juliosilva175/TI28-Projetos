@@ -18,20 +18,20 @@ while ($tbl = mysqli_fetch_array($retorno)){
 }
 //Apertar Botão de alterar
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $ID = $_POST['id'];
+    $id = $_POST['id'];
     $nomeproduto = $_POST['txtnome'];
     $quantidade = $_post['txtqtd'];
     $unidade = $_POST['txtunidade'];
     $preco = $_POST['txtpreco'];
-    $status = $_POST['txtstatus'];
-    $imagem = $_POST['txtimagem'];
+    $status = $_POST['status'];
+    $imagem = $_POST['imagem'];
 
 }
 
 
 
 
-
+//ajustando imagem para o banco
 if(isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_err_OK){
  $imagem_temp = $_FILES['imagem']['tmp_name'];
  $imagem_file_get_contentes($imagem_temp);
@@ -41,14 +41,17 @@ if(isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_err_OK){
 
 //verificar se imagem que está chegando é igual que será gravada
 if($imagem_atual == $imagem_base64){
-    $sql = "UPDATE tb_produtos SET pro_nome = '$nomeproduto', pro_quantidade = $quantidade, pro_unidade = '$unidade', pro_preco = $preco, pro_status = '$status'";
+    $sql = "UPDATE tb_produtos SET pro_nome = '$nomeproduto', pro_quantidade = $quantidade, 
+        pro_unidade = '$unidade', pro_preco = $preco, pro_status = '$status'WHERE pro_id = $id";
     mysqli_query($link, $sql);
     echo"<script>window.alert('PRODUTO ALTERADO!');</script>";
     echo"<script>window.location.href=' produto-lista.php';</script>";
 }
 
 else{
-    $sql = "UPDATE tb_produtos SET pro_nome = '$nomeproduto', pro_quantidade = $quantidade, pro_unidade = '$unidade', pro_preco = $preco, pro_status = '$status', pro_imagem = '$imagem_base64";
+    $sql = "UPDATE tb_produtos SET pro_nome = '$nomeproduto', pro_quantidade = $quantidade, 
+    pro_unidade = '$unidade', pro_preco = $preco, pro_status = '$status',
+    pro_imagem = '$imagem_base64'WHERE pro_id = $id";
     mysqli_query($link, $sql);
     echo"<script>window.alert('PRODUTO ALTERADO!');</script>";
     echo"<script>window.location.href=' produto-lista.php';</script>";

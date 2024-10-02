@@ -1,6 +1,7 @@
 <?php
 include('conectadb.php');
 include('topo.php');
+
 //coleta o valor id lá da url
 $id = $_GET['id'];
 $sql = "SELECT * FROM tb_clientes WHERE cli_id = '$id'";
@@ -44,19 +45,18 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 </head>
 <body>
     <div class="container-global">
-    <a href="backoffice.php"><img src="icons/Navigation-left-01-256.png" width="25" height="25"></a>
-
-    
+   
 
     <form class="formulario" action="cliente-altera.php" method="post">
+    <input type="hidden" name="id" value="<?= $id?>">
          
         
                 <label>NOME</label>
-                <input type="text" name="txtnome" placeholder="<?= id?>">
+                <input type="txtnome" name="txtnome" placeholder="digite seu nome" value="<?= $nome?>" required>
                 <br>
                 
                 <label>CPF</label>
-                <input type="cpf" name="txtcpf" placeholder="Digite seu cpf" value=" <?= $cpf?>" required>
+                <input type="text" id="cpf" name='txtcpf' placeholder="000.000.000-00" maxlength="14" oninput="formatarCPF(this)" value="<?= $cpf?>" disabled>
                 <label>EMAIL</label>
                 <input type="email" name="txtemail" placeholder="Digite seu email" value=" <?= $email?>" required>
                 
@@ -65,8 +65,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
                 <!-- seletoe de ativo e inativo-->
                 <div class ="bullets">
-                <input type="radio" names="status" <?$status value= '1'?"checked" : ""?>>ATIVO
-                <input type="radio" names="status" <?$status == '2'?"checked" : ""?>>inativo
+                <input type="radio" name="status"  value="1" <?= $status == '1'?"checked" : ""?>>ATIVO
+                <input type="radio" name="status" value="0"<?= $status == '0'?"checked" : ""?>>INATIVO
                 </div>
                 <br>
                 <br>
@@ -74,6 +74,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         </form>
 
     </div>
+    <script src="scripts/script.js"></script>
     
 </body>
 </html>
